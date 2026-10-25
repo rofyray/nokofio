@@ -1,0 +1,112 @@
+/* Structural styles for the shared demo engine. Concepts add the look on top. */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* phone frame */
+.nf-phone { position: relative; width: min(340px, 86vw); height: min(680px, 80vh); flex: none; }
+.nf-screen { position: absolute; inset: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.nf-screen > .nf-demo, .nf-modal-demo { flex: 1; min-height: 0; }
+
+/* demo layout */
+.nf-demo { position: relative; display: flex; flex-direction: column; height: 100%; outline: none; padding: 14px 16px 16px; }
+.nf-caption { position: absolute; left: 12px; right: 12px; top: 10px; z-index: 40; margin: 0; padding: 8px 12px; text-align: center;
+  opacity: 0; transform: translateY(-6px); transition: opacity .25s, transform .25s; pointer-events: none; }
+.nf-caption.is-on { opacity: 1; transform: none; }
+.nf-deck { position: relative; flex: 1; min-height: 0; margin: 4px 4px 0; }
+.nf-actions { flex: none; display: flex; justify-content: center; align-items: center; gap: 18px; padding-top: 16px; }
+.nf-btn { display: grid; place-items: center; gap: 2px; border: 0; background: none; padding: 0; }
+.nf-btn em { font-style: normal; }
+
+/* cards */
+.nf-card { position: absolute; inset: 0 0 18px; display: flex; flex-direction: column; overflow: hidden;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
+  z-index: calc(10 - var(--i));
+  transform: translateY(calc(var(--i) * 10px)) scale(calc(1 - var(--i) * .045));
+  transition: transform .35s cubic-bezier(.2, .8, .25, 1), opacity .35s; }
+.nf-card:not([data-top]) { pointer-events: none; }
+.nf-card.is-dragging { transition: none; cursor: grabbing; }
+.nf-card.is-nudging { transition: transform .55s cubic-bezier(.3, .7, .3, 1); }
+.nf-card.is-leaving { transition: transform .38s cubic-bezier(.5, 0, .75, 0), opacity .38s ease-in; opacity: 0; }
+.nf-card-foot { margin-top: auto; }
+.nf-icon { display: block; width: 100%; height: 100%; }
+.nf-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.nf-stamp { position: absolute; z-index: 5; pointer-events: none; opacity: 0; white-space: nowrap; }
+.nf-stamp-pay { opacity: var(--pay, 0); }
+.nf-stamp-skip { opacity: var(--skip, 0); }
+
+/* bottom sheet inside the phone */
+.nf-sheet { position: absolute; inset: 0; z-index: 50; display: flex; align-items: flex-end; background: rgb(20 15 10 / 0); transition: background .25s; }
+.nf-sheet[hidden] { display: none; }
+.nf-sheet.is-open { background: rgb(20 15 10 / .45); }
+.nf-sheet-panel { width: 100%; max-height: 94%; overflow: auto; transform: translateY(100%); transition: transform .3s cubic-bezier(.2, .8, .25, 1); }
+.nf-sheet.is-open .nf-sheet-panel { transform: none; }
+.nf-sh-head { display: flex; justify-content: space-between; align-items: center; }
+.nf-close { border: 0; background: none; width: 32px; height: 32px; }
+.nf-sh-title small { display: block; }
+.nf-facts { margin: 0; }
+.nf-facts div { display: flex; justify-content: space-between; gap: 12px; }
+.nf-facts dt, .nf-facts dd { margin: 0; }
+.nf-facts dd { text-align: right; }
+.nf-doc { margin: 0; }
+.nf-doc-head, .nf-doc-total { display: flex; justify-content: space-between; gap: 8px; }
+.nf-doc-lines { display: grid; gap: 6px; }
+.nf-doc-lines i { display: block; height: 6px; }
+.nf-doc-lines i:nth-child(2) { width: 80%; }
+.nf-doc-lines i:nth-child(3) { width: 90%; }
+.nf-doc-lines i:nth-child(4) { width: 55%; }
+.nf-sh-actions { display: flex; gap: 10px; }
+.nf-sh-actions .nf-primary { flex: 1; }
+.nf-done .nf-sh-actions > * { flex: 1 1 0; }
+.nf-primary, .nf-ghost { border: 0; }
+.nf-primary:disabled { opacity: .45; cursor: not-allowed; }
+.nf-total { display: flex; justify-content: space-between; align-items: baseline; }
+.nf-nets { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.nf-net { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.nf-net input { accent-color: currentColor; }
+.nf-net span small { display: block; }
+.nf-field { display: grid; gap: 4px; }
+
+/* Paid Board rows (compact layout inside the phone; pages restyle .nf-row) */
+.nf-row-icon { display: inline-block; width: 16px; height: 16px; flex: none; }
+.nf-row-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.nf-board { list-style: none; margin: 0; padding: 0; }
+.nf-board .nf-row { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "bill amt" "for when" "by by"; gap: 2px 10px; padding: 10px 0; }
+.nf-board .nf-row-bill { grid-area: bill; display: flex; gap: 6px; align-items: center; }
+.nf-board .nf-row-amt { grid-area: amt; text-align: right; }
+.nf-board .nf-row-for { grid-area: for; }
+.nf-board .nf-row-when { grid-area: when; text-align: right; }
+.nf-board .nf-row-by { grid-area: by; }
+.nf-board .nf-row-by small { margin-right: 6px; }
+.nf-board .nf-row-to, .nf-board .nf-row-stamp { display: none; }
+.nf-anon-tag { font-style: normal; font-size: .7em; text-transform: uppercase; opacity: .6; margin-left: 6px; white-space: nowrap; }
+.nf-field input { font: inherit; width: 100%; }
+.nf-processing { display: grid; justify-items: center; text-align: center; gap: 10px; padding: 40px 0; }
+.nf-spinner { width: 44px; height: 44px; border-radius: 50%; border: 4px solid currentColor; border-right-color: transparent; animation: nf-spin .8s linear infinite; }
+@keyframes nf-spin { to { transform: rotate(360deg); } }
+.nf-receipt { position: relative; }
+.nf-receipt dl { margin: 0; display: grid; gap: 6px; }
+.nf-receipt dl div { display: flex; justify-content: space-between; gap: 12px; }
+.nf-receipt dt, .nf-receipt dd { margin: 0; }
+.nf-receipt dd { text-align: right; }
+.nf-receipt-total { display: flex; justify-content: space-between; align-items: baseline; }
+.nf-receipt-stamp { position: absolute; pointer-events: none; }
+
+/* page-level popup */
+.nf-modal { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 16px;
+  background: rgb(20 15 10 / .7); opacity: 0; transition: opacity .25s; }
+.nf-modal[hidden] { display: none; }
+.nf-modal.is-open { opacity: 1; }
+.nf-modal-box { position: relative; max-width: 100%; transform: translateY(16px) scale(.98); transition: transform .3s cubic-bezier(.2, .8, .25, 1); }
+.nf-modal.is-open .nf-modal-box { transform: none; }
+.nf-modal .nf-caption { display: none; }
+.nf-phone-modal { height: min(640px, calc(100vh - 150px)); }
+.nf-modal-caption { margin: 18px auto 0; max-width: 340px; min-height: 2.8em; text-align: center; opacity: 0; transition: opacity .25s; }
+.nf-modal-caption.is-on { opacity: 1; }
+.nf-modal-close { position: absolute; top: -12px; right: -12px; z-index: 5; width: 40px; height: 40px; border-radius: 50%; border: 0; }
+.nf-wl ol { padding-left: 1.2em; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

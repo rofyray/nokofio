@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every bill paid on Nokofio, in public: what it was, who it helped, which biller got the money and who paid.">
+<meta property="og:title" content="The Paid Board · Nokofio">
+<meta property="og:description" content="Every bill paid on Nokofio, in public: what it was, who it helped, which biller got the money and who paid.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1D1916">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>The Paid Board · Nokofio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One&family=Caveat+Brush&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/style.css">
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ready');</script>
+</head>
+<body>
+<div class="kente" aria-hidden="true"></div>
+<nav class="wrap">
+  <a class="logo" href="/" style="color:inherit;text-decoration:none"><b>nokofio<i>★</i></b><small>something small</small></a>
+  <div class="links">
+    <a class="link" href="/">Home</a>
+    <button class="link" data-open-demo>Watch the demo</button>
+    <button class="sign sign-paper sign-sm" data-waitlist="rich">Join<span class="nav-long"> the waitlist</span></button>
+  </div>
+</nav>
+
+<main>
+  <header class="bp-hero wrap">
+    <p class="kicker">Public ledger · for accountability</p>
+    <h1 class="sec-title">The Paid Board.</h1>
+    <p class="sec-sub">Every bill paid, out in the open.</p>
+    <p class="lead">Every bill paid on Nokofio shows up here: what it was, who it helped, which biller got the money and who paid. People who get help appear by first name and area only. People who pay choose, every time: their name, or a nickname we pick for them.</p>
+
+    <div class="stats">
+      <div class="stat"><b data-stat="total">GH₵0.00</b><span>Paid to billers</span></div>
+      <div class="stat"><b data-stat="count">0</b><span>Bills cleared</span></div>
+      <div class="stat"><b data-stat="anon">0%</b><span>Paid by anonymous legends</span></div>
+    </div>
+    <p class="stat-note">Example data. The real board goes live at launch.</p>
+  </header>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="filters">
+      <div class="filter-group" role="group" aria-label="Bill type">
+        <button class="chip" data-filter="cat:all" aria-pressed="true">All bills</button>
+        <button class="chip" data-filter="cat:light" aria-pressed="false">Light</button>
+        <button class="chip" data-filter="cat:water" aria-pressed="false">Water</button>
+        <button class="chip" data-filter="cat:school" aria-pressed="false">School fees</button>
+        <button class="chip" data-filter="cat:health" aria-pressed="false">Hospital</button>
+        <button class="chip" data-filter="cat:rent" aria-pressed="false">Rent</button>
+      </div>
+      <div class="filter-group" role="group" aria-label="Donor">
+        <button class="chip" data-filter="donor:all" aria-pressed="true">Everybody</button>
+        <button class="chip" data-filter="donor:named" aria-pressed="false">Named</button>
+        <button class="chip" data-filter="donor:anon" aria-pressed="false">Anonymous</button>
+      </div>
+    </div>
+
+    <div class="board-sheet paper">
+      <div class="bs-head"><b>Nokofio · Paid Board</b><span>Example data · newest first</span></div>
+      <div class="bs-cols" aria-hidden="true"><span>When</span><span>Bill</span><span>For</span><span>Paid to</span><span>Amount</span><span>Paid by</span><span></span></div>
+      <ol class="bs-rows" data-board-rows="all"></ol>
+      <p class="bs-empty" hidden>Nothing here yet. Somebody go pay soon.</p>
+      <div class="bs-foot"><span>Every row names the biller and a reference anyone can check</span><span>No phone numbers. No surnames for people who get help.</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">How the board stays fair.</h2>
+        <p class="sec-sub">Anyone can check the money. Nobody learns more than a first name.</p>
+      </div>
+    </div>
+    <dl class="ledger">
+      <div class="ledger-row"><dt>GOT HELP</dt><dd class="big">First name + area</dd><dd class="det">Never a phone number, surname or house address. The bill story stays in the app.</dd></div>
+      <div class="ledger-row"><dt>PAID</dt><dd class="big">Your name or a nickname</dd><dd class="det">You choose on every payment. Anonymous donors get a nickname like “Chairman”, tagged anonymous.</dd></div>
+      <div class="ledger-row"><dt>PROOF</dt><dd class="big">Biller + reference</dd><dd class="det">Every row names the biller and a Nokofio reference, so the payment can be traced.</dd></div>
+      <div class="ledger-row not"><dt>NEVER</dt><dd class="big"><span class="strike">Cash to a person</span></dd><dd class="det">Money goes to the biller, never to anybody’s cousin.</dd></div>
+    </dl>
+  </section>
+
+  <div class="wrap finale-stage">
+    <div class="finale">
+      <h2>Your name could be here.<br><span>Or just “Chairman”.</span></h2>
+      <p>Join the waitlist. Pay the first bills.</p>
+      <div class="ctas">
+        <button class="sign sign-green" data-waitlist="need_help">I need help</button>
+        <button class="sign sign-gold" data-waitlist="rich">I get money</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap">
+  <span><b>nokofio★</b>Made for Ghana</span>
+  <span>Coming Soon</span>
+</footer>
+<div class="kente" aria-hidden="true"></div>
+
+<script src="https://tally.so/widgets/embed.js"></script>
+<script src="/js/demo.js"></script>
+<script src="/js/board.js"></script>
+<script src="/js/motion.js"></script>
+<script>
+  Nokofio.initPage({
+    tally: {
+      formId: 'VpLgaN',
+      ref: 'paid-board',
+      roles: { need_help: 'I need help', rich: 'I get money' }
+    },
+    copy: {
+      stampPay: 'I GO PAY',
+      stampSkip: 'NEXT TIME',
+      wlRich: 'You get money. We believe you.',
+      captions: [
+        'Every card be real bill. Swipe left to pass.',
+        'Tap am to read the story den see the bill.',
+        'Swipe right to pay. Full amount, no be small small.',
+        'Pick your MoMo.',
+        'Show your name, or stay anonymous. Your choice.',
+        'Money goes straight to the biller. Not the person.',
+        'Den e go land for the Paid Board. Everybody fit see.',
+        'Chale, e fini. Next bill.',
+        'Your turn. Swipe am.'
+      ]
+    }
+  });
+</script>
+</body>
+</html>
