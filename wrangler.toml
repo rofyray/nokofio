@@ -1,4 +1,8 @@
-# Cloudflare Pages: static site, no build step.
+# Cloudflare Workers static assets: serves the site/ folder as-is, no build step.
 name = "nokofio"
-pages_build_output_dir = "site"
 compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./site"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

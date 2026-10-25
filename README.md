@@ -28,19 +28,17 @@ Then open http://localhost:8080.
 
 ## Deploy
 
-**Cloudflare Pages (recommended):** push this repo to GitHub, then in Cloudflare go to *Workers & Pages → Create → Pages → Connect to Git*, pick the repo and set:
+The site is deployed on **Cloudflare Workers (static assets)** at https://nokofio.rofyone.workers.dev. `wrangler.toml` points Cloudflare at the `site/` folder, and there's no build step.
 
-- Framework preset: **None**
-- Build command: *(leave empty)*
-- Build output directory: **site**
-
-Every push to `main` redeploys. To deploy from your machine instead:
+Deploy from your machine (Wrangler is already signed in):
 
 ```bash
-npx wrangler pages deploy site
+npx wrangler deploy
 ```
 
-Any other static host (Netlify, Vercel, GitHub Pages) works the same way: serve the `site/` folder.
+To redeploy automatically on every push, open the `nokofio` Worker in the Cloudflare dashboard, go to *Settings → Build*, and connect this GitHub repo. Leave the build command empty and keep `npx wrangler deploy` as the deploy command.
+
+`site/_headers` sets security and cache headers, `site/_redirects` sends old `/board.html` links to `/board/`, and `site/404.html` is the not-found page. Any other static host works too: serve the `site/` folder.
 
 ## Waitlist form
 
